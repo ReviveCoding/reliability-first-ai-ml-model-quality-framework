@@ -1,0 +1,11 @@
+cfpb:
+  expected_columns:
+    - product
+    - issue
+    - consumer_complaint_narrative
+    - company_response_to_consumer
+    - timely_response
+    - date_received
+    - state
+synthetic:
+  sample_size_default: 2500

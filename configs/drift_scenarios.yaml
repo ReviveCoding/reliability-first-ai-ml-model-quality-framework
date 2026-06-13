@@ -1,0 +1,10 @@
+scenarios:
+  missingness_spike:
+    column: consumer_complaint_narrative
+    rate: 0.15
+  feature_drift:
+    column: product
+    rate: 0.20
+  training_serving_skew:
+    dropped_columns:
+      - state

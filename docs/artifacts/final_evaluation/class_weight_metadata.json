@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "mode": "sqrt_balanced",
+  "source_split": "train",
+  "formula": "sqrt(n_samples / (n_classes * class_count)); normalized to arithmetic mean 1.0",
+  "class_count": 10,
+  "classes": [
+    "Checking or savings account",
+    "Credit card / prepaid card",
+    "Credit reporting or other personal consumer reports",
+    "Debt collection",
+    "Money transfer, virtual currency, or money service",
+    "Mortgage",
+    "Other",
+    "Payday loan, title loan, personal loan, or advance loan",
+    "Student loan",
+    "Vehicle loan or lease"
+  ],
+  "weights": {
+    "Checking or savings account": 0.5316845598998842,
+    "Credit card / prepaid card": 0.49180715504729683,
+    "Credit reporting or other personal consumer reports": 0.14456926537975123,
+    "Debt collection": 0.39897040847761417,
+    "Money transfer, virtual currency, or money service": 0.6251328955514461,
+    "Mortgage": 0.7257839073469912,
+    "Other": 3.46735841734428,
+    "Payday loan, title loan, personal loan, or advance loan": 1.4018660801821232,
+    "Student loan": 1.1163523044741546,
+    "Vehicle loan or lease": 1.0964750062964606
+  },
+  "minimum_weight": 0.14456926537975123,
+  "maximum_weight": 3.46735841734428,
+  "mean_weight": 1.0000000000000002,
+  "fixed_input_sha256": "59648e6c775a54bf6f3d8c5f2b63cb8948f2bd270018d2619ff410c46414de66",
+  "fixed_input_rows": 19996
+}

@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "audit": "transformer_3seed_stability",
+  "seed_count": 3,
+  "seeds": [
+    7,
+    17,
+    27
+  ],
+  "fixed_input_sha256": "59648e6c775a54bf6f3d8c5f2b63cb8948f2bd270018d2619ff410c46414de66",
+  "fixed_input_row_count": 19996,
+  "class_weighting_enabled": false,
+  "epochs": 2,
+  "transformer_selection_rate": 1.0,
+  "threshold_note": "Project-specific engineering guardrails for a 3-seed audit; not universal statistical thresholds.",
+  "thresholds": {
+    "selection_macro_f1_sample_std_max": 0.02,
+    "test_macro_f1_sample_std_max": 0.02,
+    "test_macro_f1_range_max": 0.05,
+    "test_pr_auc_sample_std_max": 0.01,
+    "test_ece_sample_std_max": 0.02,
+    "test_worst_slice_f1_sample_std_max": 0.05,
+    "test_worst_slice_f1_range_max": 0.12,
+    "transformer_selection_rate_min": 0.6666666666666666
+  },
+  "checks": [
+    {
+      "name": "selection_macro_f1.sample_std",
+      "value": 0.019573576303398264,
+      "operator": "<=",
+      "threshold": 0.02,
+      "passed": true
+    },
+    {
+      "name": "test_macro_f1.sample_std",
+      "value": 0.0049045810047132,
+      "operator": "<=",
+      "threshold": 0.02,
+      "passed": true
+    },
+    {
+      "name": "test_macro_f1.range",
+      "value": 0.00925238361964964,
+      "operator": "<=",
+      "threshold": 0.05,
+      "passed": true
+    },
+    {
+      "name": "test_pr_auc.sample_std",
+      "value": 0.008488711434466249,
+      "operator": "<=",
+      "threshold": 0.01,
+      "passed": true
+    },
+    {
+      "name": "test_ece.sample_std",
+      "value": 0.0037313342922298044,
+      "operator": "<=",
+      "threshold": 0.02,
+      "passed": true
+    },
+    {
+      "name": "test_worst_slice_f1.sample_std",
+      "value": 0.025000000000000022,
+      "operator": "<=",
+      "threshold": 0.05,
+      "passed": true
+    },
+    {
+      "name": "test_worst_slice_f1.range",
+      "value": 0.050000000000000044,
+      "operator": "<=",
+      "threshold": 0.12,
+      "passed": true
+    },
+    {
+      "name": "transformer_selection_rate",
+      "value": 1.0,
+      "operator": ">=",
+      "threshold": 0.6666666666666666,
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "verdict": "STABLE",
+  "next_action": "Proceed to a class-weighted Transformer challenger experiment."
+}

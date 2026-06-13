@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software or its evaluation design, please cite it using this metadata."
+title: "Reliability-First AI/ML Model Quality Framework"
+type: software
+authors:
+  - family-names: "Bae"
+    given-names: "Jinwoo"
+repository-code: "https://github.com/ReviveCoding/reliability-first-ai-ml-model-quality-framework"
+url: "https://github.com/ReviveCoding/reliability-first-ai-ml-model-quality-framework"
+license: MIT
+version: 0.1.0
+keywords:
+  - machine-learning
+  - model-quality
+  - model-validation
+  - calibration
+  - data-quality
+  - drift-detection
+  - worst-slice-evaluation
+  - responsible-ai
+  - reproducibility
+abstract: >-
+  A reliability-first framework for leakage-safe model selection, calibration,
+  worst-slice evaluation, multi-seed stability analysis, drift and stress
+  testing, auditable provenance, and launch-gate decisions.

@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "selection_split": "selection",
+  "primary_target": "product",
+  "primary_metric": "macro_f1",
+  "selection_winner": "transformer_text_classifier",
+  "runner_up": "tfidf_logistic_temperature_scaled",
+  "winner_metrics": {
+    "model": "transformer_text_classifier",
+    "target_col": "product",
+    "total_rows": 1499,
+    "evaluated_rows": 1499,
+    "unknown_target_rate": 0.0,
+    "accuracy": 0.9066044029352902,
+    "macro_f1": 0.5944291427339397,
+    "evaluation_class_coverage": 1.0,
+    "roc_auc": 0.9589471804568503,
+    "pr_auc": 0.6347967138851864,
+    "ece": 0.0269624645348944,
+    "brier": 0.1458327284989832,
+    "log_loss": 0.3272891044616699,
+    "worst_slice_f1": 0.2666666666666666,
+    "macro_f1_ci_low": 0.529400012854622,
+    "macro_f1_ci_high": 0.6430972972955578,
+    "bootstrap_resamples": 300.0,
+    "note": "Selection metrics used 1499/1499 known-label rows; final metrics used 3000/3000 rows on device=cuda.",
+    "device": "cuda"
+  },
+  "runner_up_metrics": {
+    "model": "tfidf_logistic_temperature_scaled",
+    "target_col": "product",
+    "total_rows": 1499,
+    "evaluated_rows": 1499,
+    "unknown_target_rate": 0.0,
+    "accuracy": 0.8559039359573049,
+    "macro_f1": 0.5334078873755109,
+    "evaluation_class_coverage": 1.0,
+    "roc_auc": 0.9491431047393458,
+    "pr_auc": 0.5962379375827498,
+    "ece": 0.0137730811592653,
+    "brier": 0.2005030270577306,
+    "log_loss": 0.4410399155003324,
+    "worst_slice_f1": 0.2666666666666666,
+    "macro_f1_ci_low": null,
+    "macro_f1_ci_high": null,
+    "bootstrap_resamples": null,
+    "note": null,
+    "device": null
+  },
+  "selection_margin": 0.06102125535842873,
+  "selection_split_only": true,
+  "test_used_for_selection": false,
+  "policy_mode": "strict",
+  "selection_mode": "strict_eligible_selection",
+  "eligibility_status": "ELIGIBLE_CANDIDATE_SELECTED",
+  "primary_target_candidate_count": 3,
+  "eligible_candidate_count": 2,
+  "constraint_results": [
+    {
+      "metric": "evaluation_class_coverage",
+      "operator": ">=",
+      "threshold": 1.0,
+      "passing_models_before_next_constraint": 3
+    },
+    {
+      "metric": "unknown_target_rate",
+      "operator": "<=",
+      "threshold": 0.0,
+      "passing_models_before_next_constraint": 3
+    },
+    {
+      "metric": "ece",
+      "operator": "<=",
+      "threshold": 0.08,
+      "passing_models_before_next_constraint": 2
+    },
+    {
+      "metric": "brier",
+      "operator": "<=",
+      "threshold": 0.3,
+      "passing_models_before_next_constraint": 2
+    },
+    {
+      "metric": "log_loss",
+      "operator": "<=",
+      "threshold": 0.6,
+      "passing_models_before_next_constraint": 2
+    }
+  ]
+}

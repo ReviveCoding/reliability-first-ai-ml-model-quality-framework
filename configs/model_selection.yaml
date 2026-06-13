@@ -1,0 +1,22 @@
+﻿schema_version: 1
+primary_target: product
+primary_metric: macro_f1
+greater_is_better: true
+selection_split_only: true
+test_used_for_selection: false
+
+eligibility_constraints:
+  evaluation_class_coverage_min: 1.0
+  unknown_target_rate_max: 0.0
+  ece_max: 0.08
+  brier_max: 0.30
+  log_loss_max: 0.60
+
+tie_breakers:
+  - pr_auc_desc
+  - brier_asc
+  - log_loss_asc
+  - ece_asc
+
+fallback_policy:
+  model: tfidf_logistic_temperature_scaled

@@ -1,0 +1,181 @@
+{
+  "schema_version": 2,
+  "experiment": "sqrt_balanced_transformer_3seed_challenger",
+  "baseline_audit_root": "<REPO_ROOT>\\sa\\s_20260612_234110",
+  "experiment_root": "<REPO_ROOT>\\cw\\w_20260613_000604",
+  "seeds": [
+    7,
+    17,
+    27
+  ],
+  "epochs": 2,
+  "batch_size": 32,
+  "transformer_model": "distilbert-base-uncased",
+  "fixed_input_sha256": "59648e6c775a54bf6f3d8c5f2b63cb8948f2bd270018d2619ff410c46414de66",
+  "fixed_input_rows": 19996,
+  "class_weighting": {
+    "schema_version": 1,
+    "mode": "sqrt_balanced",
+    "source_split": "train",
+    "formula": "sqrt(n_samples / (n_classes * class_count)); normalized to arithmetic mean 1.0",
+    "class_count": 10,
+    "classes": [
+      "Checking or savings account",
+      "Credit card / prepaid card",
+      "Credit reporting or other personal consumer reports",
+      "Debt collection",
+      "Money transfer, virtual currency, or money service",
+      "Mortgage",
+      "Other",
+      "Payday loan, title loan, personal loan, or advance loan",
+      "Student loan",
+      "Vehicle loan or lease"
+    ],
+    "weights": {
+      "Checking or savings account": 0.5316845598998842,
+      "Credit card / prepaid card": 0.49180715504729683,
+      "Credit reporting or other personal consumer reports": 0.14456926537975123,
+      "Debt collection": 0.39897040847761417,
+      "Money transfer, virtual currency, or money service": 0.6251328955514461,
+      "Mortgage": 0.7257839073469912,
+      "Other": 3.46735841734428,
+      "Payday loan, title loan, personal loan, or advance loan": 1.4018660801821232,
+      "Student loan": 1.1163523044741546,
+      "Vehicle loan or lease": 1.0964750062964606
+    },
+    "minimum_weight": 0.14456926537975123,
+    "maximum_weight": 3.46735841734428,
+    "mean_weight": 1.0000000000000002,
+    "fixed_input_sha256": "59648e6c775a54bf6f3d8c5f2b63cb8948f2bd270018d2619ff410c46414de66",
+    "fixed_input_rows": 19996
+  },
+  "selection_decision": "REJECT_CHALLENGER",
+  "selection_checks": [
+    {
+      "name": "selection.mean_macro_f1_delta",
+      "value": 0.03336114567966834,
+      "operator": ">=",
+      "threshold": -0.005,
+      "passed": true
+    },
+    {
+      "name": "selection.macro_f1_improved_seed_count",
+      "value": 3,
+      "operator": ">=",
+      "threshold": 2,
+      "passed": true
+    },
+    {
+      "name": "selection.mean_worst_slice_f1_delta",
+      "value": -0.004329004329004282,
+      "operator": ">=",
+      "threshold": 0.04,
+      "passed": false
+    },
+    {
+      "name": "selection.worst_slice_improved_seed_count",
+      "value": 1,
+      "operator": ">=",
+      "threshold": 2,
+      "passed": false
+    },
+    {
+      "name": "selection.mean_ece_delta",
+      "value": -0.0021887913707469664,
+      "operator": "<=",
+      "threshold": 0.02,
+      "passed": true
+    },
+    {
+      "name": "selection.mean_pr_auc_delta",
+      "value": 0.017652212710925,
+      "operator": ">=",
+      "threshold": -0.01,
+      "passed": true
+    }
+  ],
+  "selection_failed_checks": [
+    {
+      "name": "selection.mean_worst_slice_f1_delta",
+      "value": -0.004329004329004282,
+      "operator": ">=",
+      "threshold": 0.04,
+      "passed": false
+    },
+    {
+      "name": "selection.worst_slice_improved_seed_count",
+      "value": 1,
+      "operator": ">=",
+      "threshold": 2,
+      "passed": false
+    }
+  ],
+  "test_confirmation_role": "Post-selection launch confirmation only; not used to choose between baseline and challenger.",
+  "test_used_for_challenger_selection": false,
+  "test_confirmation_checks": [
+    {
+      "name": "test_confirmation.mean_macro_f1_delta",
+      "value": 0.014999778576822033,
+      "operator": ">=",
+      "threshold": -0.005,
+      "passed": true
+    },
+    {
+      "name": "test_confirmation.mean_worst_slice_f1_delta",
+      "value": -0.03769108033076777,
+      "operator": ">=",
+      "threshold": 0.02,
+      "passed": false
+    },
+    {
+      "name": "test_confirmation.worst_slice_improved_seed_count",
+      "value": 1,
+      "operator": ">=",
+      "threshold": 2,
+      "passed": false
+    },
+    {
+      "name": "test_confirmation.mean_ece_delta",
+      "value": -0.005981596648693001,
+      "operator": "<=",
+      "threshold": 0.02,
+      "passed": true
+    },
+    {
+      "name": "test_confirmation.mean_pr_auc_delta",
+      "value": 0.011464671722358663,
+      "operator": ">=",
+      "threshold": -0.01,
+      "passed": true
+    }
+  ],
+  "test_confirmation_failed_checks": [
+    {
+      "name": "test_confirmation.mean_worst_slice_f1_delta",
+      "value": -0.03769108033076777,
+      "operator": ">=",
+      "threshold": 0.02,
+      "passed": false
+    },
+    {
+      "name": "test_confirmation.worst_slice_improved_seed_count",
+      "value": 1,
+      "operator": ">=",
+      "threshold": 2,
+      "passed": false
+    }
+  ],
+  "final_decision": "REJECT_WEIGHTED",
+  "next_action": "Keep the unweighted Transformer as the selected promotion candidate configuration. Preserve the temperature-scaled TF-IDF Logistic model as fallback. The weighted challenger did not satisfy the predeclared selection-split criteria.",
+  "improvement_tolerance": 1e-06,
+  "improvement_definition": "A paired delta counts as improved only when delta > 1e-06. Values within +/-tolerance of zero are ties.",
+  "final_model_configuration": {
+    "selected_model": "transformer_text_classifier",
+    "training_mode": "unweighted",
+    "promotion_candidate": "transformer_text_classifier",
+    "fallback_model": "tfidf_logistic_temperature_scaled",
+    "weighted_challenger": "rejected",
+    "approved_champion": null,
+    "launch_state": "REVIEW"
+  }
+}

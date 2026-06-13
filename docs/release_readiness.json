@@ -1,0 +1,19 @@
+﻿{
+    "schema_version":  1,
+    "generated_at":  "2026-06-13T00:17:44.2684196-04:00",
+    "final_model":  "transformer_text_classifier",
+    "training_mode":  "unweighted",
+    "fallback_model":  "tfidf_logistic_temperature_scaled",
+    "weighted_challenger_decision":  "REJECT_WEIGHTED",
+    "launch_state":  "REVIEW",
+    "approved_champion":  null,
+    "improvement_tolerance":  1E-06,
+    "ruff_and_pytest":  "PASS",
+    "canonical_artifact_manifest":  "docs/artifacts/final_evaluation/manifest.json",
+    "git_repo_detected":  true,
+    "git_branch":  "main",
+    "git_diff_check":  "PENDING_INITIAL_STAGE",
+    "document_encoding_check":  "PASS",
+    "initial_commit_candidate_count":  206,
+    "initial_commit_files_over_50_mib":  0
+}

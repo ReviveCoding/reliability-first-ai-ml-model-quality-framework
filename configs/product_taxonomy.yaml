@@ -1,0 +1,14 @@
+taxonomy_version: 1
+source: "CFPB historical product-category normalization for longitudinal modeling"
+target_column: product
+raw_column: product_raw
+description: >-
+  Preserves the original CFPB product label while mapping historically renamed or
+  reorganized product categories into a stable canonical target for temporal model
+  development and evaluation.
+mapping:
+  "Credit reporting, credit repair services, or other personal consumer reports": "Credit reporting or other personal consumer reports"
+  "Payday loan, title loan, or personal loan": "Payday loan, title loan, personal loan, or advance loan"
+  "Credit card": "Credit card / prepaid card"
+  "Prepaid card": "Credit card / prepaid card"
+  "Credit card or prepaid card": "Credit card / prepaid card"

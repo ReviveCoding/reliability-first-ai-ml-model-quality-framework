@@ -1,0 +1,15 @@
+models:
+  logistic:
+    enabled: true
+    text_col: consumer_complaint_narrative
+    target_col: product
+  lightgbm:
+    enabled: true
+    target_col: timely_response
+  transformer:
+    enabled: false
+    model_name: distilbert-base-uncased
+    target_col: product
+    max_length: 128
+    epochs: 1
+    batch_size: 16

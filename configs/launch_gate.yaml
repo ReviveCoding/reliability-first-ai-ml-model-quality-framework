@@ -1,0 +1,37 @@
+data_quality:
+  required_column_coverage_min: 1.00
+  completeness_min: 0.98
+  duplicate_rate_max: 0.01
+  label_missing_rate_max: 0.02
+  date_validity_min: 0.98
+  evidence_coverage_min: 0.90
+split_integrity:
+  no_overlap_min: 1.00
+  temporal_order_valid_min: 1.00
+  product_calibration_class_coverage_min: 0.80
+  product_selection_class_coverage_min: 0.80
+  product_test_class_coverage_min: 0.80
+model_quality:
+  macro_f1_min: 0.60
+  pr_auc_min: 0.50
+  ece_max: 0.20
+  brier_max: 0.35
+  log_loss_max: 1.20
+  worst_slice_f1_min: 0.45
+  unknown_target_rate_max: 0.05
+  evaluated_rows_min: 50
+  macro_f1_ci_low_min: 0.45
+  selection_test_macro_f1_gap_max: 0.15
+evidence_quality:
+  recall_at_5_min: 0.50
+  mrr_min: 0.40
+  context_precision_min: 0.50
+  unsupported_claim_rate_max: 0.10
+drift:
+  max_psi: 0.25
+  ks_pvalue_min: 0.001
+  training_serving_skew_max: 0.15
+genai_telemetry:
+  task_completion_rate_min: 0.80
+  p95_latency_ms_max: 3500
+  regression_flag_rate_max: 0.10

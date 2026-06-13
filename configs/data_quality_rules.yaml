@@ -1,0 +1,13 @@
+required_columns:
+  - product
+  - issue
+  - consumer_complaint_narrative
+  - company_response_to_consumer
+  - timely_response
+  - date_received
+  - state
+thresholds:
+  completeness_min: 0.98
+  duplicate_rate_max: 0.01
+  label_missing_rate_max: 0.02
+  evidence_coverage_min: 0.90

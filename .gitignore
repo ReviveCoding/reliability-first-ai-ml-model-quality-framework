@@ -1,0 +1,77 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# Local model binaries and heavy optional artifacts
+*.pkl
+*.joblib
+outputs/transformer_model/
+mlruns/
+
+# Raw/intermediate data are user-local. Keep generated summary artifacts.
+data/raw/*
+data/interim/*
+data/processed/*
+data/golden/*.csv
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/golden/.gitkeep
+
+# Monte Carlo per-run folders are reproducible; commit summaries/reports only.
+monte_carlo/runs/
+monte_carlo_smoke/
+tmp_*/
+
+# User-local archive extraction and real-dataset audit workspaces
+data/archive_cache/
+dataset_audit/
+ci_public_data/
+ci_public_outputs/
+
+# BEGIN MODEL QUALITY GENERATED ARTIFACTS
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.env
+.env.*
+!.env.example
+
+data/raw/
+data/processed/
+data/golden/
+data/archive_cache/
+
+outputs/
+runs/
+mlruns/
+sa/
+cw/
+stability_audit/
+backups/
+
+*.joblib
+*.pkl
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.log
+# END MODEL QUALITY GENERATED ARTIFACTS
+
+# Local caches and one-off patch backups
+.cache/
+*.bak
+*.backup_*
+*.pre_ps51_fix_*
+*.egg-info/
+build/
+dist/

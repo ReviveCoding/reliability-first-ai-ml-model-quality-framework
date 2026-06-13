@@ -1,0 +1,30 @@
+{
+  "schema_version": 2,
+  "evaluated_selection_winner": "transformer_text_classifier",
+  "promotion_candidate": "transformer_text_classifier",
+  "eligibility_status": "ELIGIBLE_CANDIDATE_SELECTED",
+  "candidate_test_metrics": {
+    "model": "transformer_text_classifier",
+    "target_col": "product",
+    "total_rows": 3000,
+    "evaluated_rows": 3000,
+    "unknown_target_rate": 0.0,
+    "accuracy": 0.845,
+    "macro_f1": 0.588931651431394,
+    "evaluation_class_coverage": 1.0,
+    "roc_auc": 0.9463987165255624,
+    "pr_auc": 0.6984157991749774,
+    "ece": 0.051741720577081,
+    "brier": 0.2341734558245586,
+    "log_loss": 0.4972614645957947,
+    "worst_slice_f1": 0.2149600580973129,
+    "macro_f1_ci_low": 0.5550909995643581,
+    "macro_f1_ci_high": 0.6204419152734193,
+    "bootstrap_resamples": 300,
+    "validation_unknown_target_rate": 0.0,
+    "note": "Selection metrics used 1499/1499 known-label rows; final metrics used 3000/3000 rows on device=cuda.",
+    "device": "cuda"
+  },
+  "selection_test_primary_metric_gap": 0.005497491302545621,
+  "test_used_for_reselection": false
+}

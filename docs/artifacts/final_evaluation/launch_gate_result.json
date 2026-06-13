@@ -1,0 +1,56 @@
+{
+  "schema_version": 3,
+  "selection_winner": "transformer_text_classifier",
+  "promotion_candidate": "transformer_text_classifier",
+  "fallback_model": "tfidf_logistic_temperature_scaled",
+  "decision": "REVIEW",
+  "approved_champion": null,
+  "selection_policy_mode": "strict",
+  "eligibility_status": "ELIGIBLE_CANDIDATE_SELECTED",
+  "candidate_source": "model_selection_decision.json",
+  "metric_source": "candidate_test_evaluation.json",
+  "failed_checks": [
+    {
+      "name": "candidate_test.macro_f1",
+      "value": 0.588931651431394,
+      "threshold": 0.6,
+      "passed": false,
+      "mode": "min",
+      "violation_ratio": 0.018447247614343243
+    },
+    {
+      "name": "candidate_test.worst_slice_f1",
+      "value": 0.21496005809731297,
+      "threshold": 0.45,
+      "passed": false,
+      "mode": "min",
+      "violation_ratio": 0.5223109820059711
+    },
+    {
+      "name": "evidence_quality.context_precision",
+      "value": 0.412,
+      "threshold": 0.5,
+      "passed": false,
+      "mode": "min",
+      "violation_ratio": 0.17600000000000005
+    },
+    {
+      "name": "drift.max_psi",
+      "value": 0.2513381056937054,
+      "threshold": 0.25,
+      "passed": false,
+      "mode": "max",
+      "violation_ratio": 0.005352422774821619
+    },
+    {
+      "name": "drift.min_ks_pvalue",
+      "value": 0.0006405224225199224,
+      "threshold": 0.001,
+      "passed": false,
+      "mode": "min",
+      "violation_ratio": 0.35947757748007764
+    }
+  ],
+  "legacy_gate_decision": "REVIEW",
+  "legacy_gate_backup": "launch_gate_result_legacy.json"
+}

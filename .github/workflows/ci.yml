@@ -1,0 +1,58 @@
+name: quality-framework-ci
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install minimal dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-ci.txt
+          pip install -e . --no-deps
+          python -m pip check
+      - name: Run static checks
+        run: ruff check .
+      - name: Run tests
+        run: python -m pytest -q
+      - name: Run synthetic smoke pipeline
+        if: matrix.python-version == '3.11'
+        run: python scripts/run_full_pipeline.py --use-synthetic --sample-size 800 --enable-lightgbm --disable-mlflow
+      - name: Run public-schema file ingestion smoke
+        if: matrix.python-version == '3.11'
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from model_quality.ingestion.load_cfpb import make_synthetic_cfpb
+
+          frame = make_synthetic_cfpb(sample_size=500, random_state=20260612)
+          renamed = frame.rename(columns={
+              'date_received': 'Date received',
+              'product': 'Product',
+              'issue': 'Issue',
+              'consumer_complaint_narrative': 'Consumer complaint narrative',
+              'company_response_to_consumer': 'Company response to consumer',
+              'timely_response': 'Timely response?',
+              'state': 'State',
+              'submitted_via': 'Submitted via',
+              'company': 'Company',
+          })
+          raw = Path('ci_public_data/raw')
+          raw.mkdir(parents=True, exist_ok=True)
+          renamed.to_csv(raw / 'complaints.csv', index=False)
+          PY
+          python scripts/dataset_preflight.py --data-dir ci_public_data --output ci_public_outputs/dataset_preflight.json
+          python scripts/run_full_pipeline.py --data-dir ci_public_data --sample-size 500 --sampling-strategy auto --enable-lightgbm --disable-mlflow --outputs-dir ci_public_outputs --reports-dir ci_public_reports --tracking-uri ci_public_mlruns
+      - name: Run Monte Carlo sensitivity smoke
+        if: matrix.python-version == '3.11'
+        run: python scripts/run_monte_carlo.py --scenarios nominal severe --runs-per-scenario 1 --sample-size 400 --jobs 2 --output-root monte_carlo_smoke

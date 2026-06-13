@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "scope": "Caches, temporary patch files, and incomplete generated experiment directories only.",
+  "completed_experiments_preserved": true,
+  "removed_paths": [
+    "<REPO_ROOT>\\.pytest_cache",
+    "<REPO_ROOT>\\.ruff_cache",
+    "<REPO_ROOT>\\dashboard\\__pycache__",
+    "<REPO_ROOT>\\scripts\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\drift\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\evaluation\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\features\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\gates\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\ingestion\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\models\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\reporting\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\retrieval\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\risk\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\simulation\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\telemetry\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\tracking\\__pycache__",
+    "<REPO_ROOT>\\src\\model_quality\\validation\\__pycache__",
+    "<REPO_ROOT>\\tests\\__pycache__",
+    "<REPO_ROOT>\\cw\\w_20260612_235845"
+  ]
+}

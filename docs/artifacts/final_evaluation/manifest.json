@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "purpose": "Small, GitHub-safe canonical evidence bundle for the final model-quality decision.",
+  "final_model_configuration": {
+    "selected_model": "transformer_text_classifier",
+    "training_mode": "unweighted",
+    "promotion_candidate": "transformer_text_classifier",
+    "fallback_model": "tfidf_logistic_temperature_scaled",
+    "weighted_challenger": "rejected",
+    "approved_champion": null,
+    "launch_state": "REVIEW"
+  },
+  "improvement_tolerance": 1e-06,
+  "files": [
+    {
+      "file": "baseline_stability_decision.json",
+      "source": "<REPO_ROOT>\\sa\\s_20260612_234110\\transformer_3seed_stability_decision.json",
+      "size_bytes": 2363,
+      "sha256": "715ebe6bc0ab7e0cd539ce43d011fc27b4a878634440b12b7b2df7c1ee35625c"
+    },
+    {
+      "file": "baseline_stability_report.md",
+      "source": "<REPO_ROOT>\\sa\\s_20260612_234110\\transformer_3seed_stability_report.md",
+      "size_bytes": 5073,
+      "sha256": "20b074e5fec90cefb8201a6d62c560579b0523a5b9b86d452f9c4fd216ef244e"
+    },
+    {
+      "file": "baseline_3seed_metrics.csv",
+      "source": "<REPO_ROOT>\\sa\\s_20260612_234110\\transformer_3seed_metrics.csv",
+      "size_bytes": 1211,
+      "sha256": "92a4e24e1ef60ce0768f3deb7f9cfed7f2352831e117e63abcafc17e106c88b5"
+    },
+    {
+      "file": "baseline_3seed_summary.csv",
+      "source": "<REPO_ROOT>\\sa\\s_20260612_234110\\transformer_3seed_summary.csv",
+      "size_bytes": 1066,
+      "sha256": "84b39cd3acb2653dc05c51177803b5c9a41435071225a08da379befff234e247"
+    },
+    {
+      "file": "weighted_challenger_decision.json",
+      "source": "<REPO_ROOT>\\cw\\w_20260613_000604\\weighted_challenger_decision.json",
+      "size_bytes": 5794,
+      "sha256": "f7e95a8833b56aedcd2a61de74a09c46d04cd06c1b11ff60a8f0412ad9818a4b"
+    },
+    {
+      "file": "weighted_challenger_report.md",
+      "source": "<REPO_ROOT>\\cw\\w_20260613_000604\\weighted_challenger_report.md",
+      "size_bytes": 8209,
+      "sha256": "70f3609b6186e2441fe1629dc2bffade9a3115f8182594b1ef177cc56b9db1a8"
+    },
+    {
+      "file": "paired_baseline_vs_weighted.csv",
+      "source": "<REPO_ROOT>\\cw\\w_20260613_000604\\paired_baseline_vs_weighted.csv",
+      "size_bytes": 2027,
+      "sha256": "321982fd2dd552b680e1770cf6bcedab2a23c9523f4827301f1c4175d15bb86a"
+    },
+    {
+      "file": "paired_delta_summary.csv",
+      "source": "<REPO_ROOT>\\cw\\w_20260613_000604\\paired_delta_summary.csv",
+      "size_bytes": 985,
+      "sha256": "2efca75f95d20ddf00c10b588d793c32baaeab6bd663e070bf574f40900caddd"
+    },
+    {
+      "file": "class_weight_metadata.json",
+      "source": "<REPO_ROOT>\\cw\\w_20260613_000604\\class_weight_metadata.json",
+      "size_bytes": 1408,
+      "sha256": "69b1cdcfc698e63060c2654e6104e91be22a7550e63d0c521b5ccd994398ac2a"
+    },
+    {
+      "file": "model_selection_decision.json",
+      "source": "<REPO_ROOT>\\outputs\\model_selection_decision.json",
+      "size_bytes": 2778,
+      "sha256": "985ae9e515725c5feb218f5a2bd6702a90e4178d702b8a94625460fd4bd2c95a"
+    },
+    {
+      "file": "candidate_test_evaluation.json",
+      "source": "<REPO_ROOT>\\outputs\\candidate_test_evaluation.json",
+      "size_bytes": 1126,
+      "sha256": "3d32d9c64efba5b4b8fad25fe0d69027376bd9ade80a44d91816e3e7ffccacb3"
+    },
+    {
+      "file": "launch_gate_result.json",
+      "source": "<REPO_ROOT>\\outputs\\launch_gate_result.json",
+      "size_bytes": 1628,
+      "sha256": "3d3d2c8d07ff5c92e9c27500f6eafa6891627b2cb5c0026ad10a3d0c7357a1d0"
+    },
+    {
+      "file": "transformer_training_provenance.json",
+      "source": "<REPO_ROOT>\\outputs\\transformer_training_provenance.json",
+      "size_bytes": 1360,
+      "sha256": "30bf8108a0d1d3e5f8d5ad253d236e9d1cd2f142ad9eab113949437542380204"
+    },
+    {
+      "file": "model_selection_leaderboard.csv",
+      "source": "<REPO_ROOT>\\outputs\\model_selection_leaderboard.csv",
+      "size_bytes": 1207,
+      "sha256": "5b993d04286d9318d82a50adc351cdcfdfc7af4972fb8de14bbe3cab0abb5e5f"
+    },
+    {
+      "file": "model_test_leaderboard.csv",
+      "source": "<REPO_ROOT>\\outputs\\model_test_leaderboard.csv",
+      "size_bytes": 1305,
+      "sha256": "c774a0d0f22445c487582b9e8314e295288c29353dfc89d0968a83cdc9aaf6bb"
+    }
+  ]
+}
