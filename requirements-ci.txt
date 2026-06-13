@@ -1,4 +1,4 @@
 -r requirements-core.txt
 lightgbm>=4.0,<5
-pytest>=8.0,<9
+pytest>=8.0,<10
 ruff>=0.6,<1

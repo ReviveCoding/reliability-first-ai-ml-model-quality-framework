@@ -4,7 +4,7 @@ matplotlib>=3.7,<4
 mlflow>=2.12,<4
 lightgbm>=4.0,<5
 streamlit>=1.35,<2
-pytest>=8.0,<9
+pytest>=8.0,<10
 py7zr>=0.21,<2
 
 # Local static checks used by the project audit.
