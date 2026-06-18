@@ -26,7 +26,7 @@ full = [
   "streamlit>=1.35,<2",
   "py7zr>=0.21,<2",
 ]
-dev = ["pytest>=8.0,<9", "ruff>=0.6,<1"]
+dev = ["pytest>=8.0,<10", "ruff>=0.6,<1"]
 gpu = [
   "torch>=2.2,<3",
   "transformers>=4.40,<6",
