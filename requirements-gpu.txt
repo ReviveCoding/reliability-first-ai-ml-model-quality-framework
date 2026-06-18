@@ -2,6 +2,6 @@
 # Install a CUDA-compatible PyTorch build for your local driver when needed.
 torch>=2.2,<3
 transformers>=4.40,<6
-datasets>=2.19,<5
+datasets>=2.19,<6
 sentence-transformers>=3.0,<6
 accelerate>=1.1.0,<2
