@@ -17,8 +17,8 @@ def ensure_dirs(*paths: str | Path) -> None:
 
 
 def load_yaml(path: str | Path) -> dict:
-    with open(path, 'r', encoding='utf-8') as file:
-        return yaml.safe_load(file)
+    """Read YAML through the same explicit UTF-8 path contract as other helpers."""
+    return yaml.safe_load(Path(path).read_text(encoding="utf-8"))
 
 
 def save_json(obj: dict, path: str | Path) -> None:
@@ -29,10 +29,9 @@ def save_json(obj: dict, path: str | Path) -> None:
 
 
 def write_text(path: str | Path, text: str) -> None:
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, 'w', encoding='utf-8') as file:
-        file.write(text)
+    destination = Path(path)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(text, encoding="utf-8")
 
 
 def safe_import(name: str):
