@@ -7,9 +7,10 @@ import math
 import re
 import subprocess
 import sys
+from collections.abc import Iterable
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 TEXT_SUFFIXES = {
     ".cff",
@@ -82,9 +83,7 @@ FORBIDDEN_SUFFIXES = (
 )
 
 SECRET_PATTERNS = {
-    "private_key": re.compile(
-        r"-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----"
-    ),
+    "private_key": re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----"),
     "github_token": re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,})\b"),
     "aws_access_key": re.compile(r"\bAKIA[0-9A-Z]{16}\b"),
     "openai_style_key": re.compile(r"\bsk-[A-Za-z0-9]{20,}\b"),
@@ -99,12 +98,8 @@ LOCAL_PATH_PATTERNS = {
         r"[^\\/\r\n]+"
         r"(?:\\\\|\\)"
     ),
-    "mac_user_path": re.compile(
-        r"(?<!https:)(?<!http:)/" r"Users/[^/\s]+/"
-    ),
-    "linux_home_path": re.compile(
-        r"(?<!https:)(?<!http:)/" r"home/[^/\s]+/"
-    ),
+    "mac_user_path": re.compile(r"(?<!https:)(?<!http:)/" r"Users/[^/\s]+/"),
+    "linux_home_path": re.compile(r"(?<!https:)(?<!http:)/" r"home/[^/\s]+/"),
 }
 
 
@@ -136,8 +131,7 @@ def tracked_files(repo: Path) -> list[str]:
     return sorted(
         path.relative_to(repo).as_posix()
         for path in repo.rglob("*")
-        if path.is_file()
-        and not any(part in excluded_roots for part in path.relative_to(repo).parts)
+        if path.is_file() and not any(part in excluded_roots for part in path.relative_to(repo).parts)
     )
 
 
@@ -165,14 +159,10 @@ def all_string_values(value: Any) -> Iterable[str]:
 def check_required_paths(repo: Path, findings: list[Finding]) -> None:
     for relative in REQUIRED_PATHS:
         if not (repo / relative).is_file():
-            findings.append(
-                Finding("ERROR", "required_path", "Required release file is missing.", relative)
-            )
+            findings.append(Finding("ERROR", "required_path", "Required release file is missing.", relative))
 
 
-def check_tracked_hygiene(
-    repo: Path, tracked: list[str], findings: list[Finding]
-) -> None:
+def check_tracked_hygiene(repo: Path, tracked: list[str], findings: list[Finding]) -> None:
     for relative in tracked:
         normalized = relative.replace("\\", "/")
         lowered = normalized.lower()
@@ -231,9 +221,7 @@ def check_tracked_hygiene(
                 )
 
 
-def check_text_hygiene(
-    repo: Path, tracked: list[str], findings: list[Finding]
-) -> None:
+def check_text_hygiene(repo: Path, tracked: list[str], findings: list[Finding]) -> None:
     for relative in tracked:
         path = repo / relative
         if path.suffix.lower() not in TEXT_SUFFIXES or not path.is_file():
@@ -275,9 +263,7 @@ def check_text_hygiene(
                 )
 
 
-def check_structured_files(
-    repo: Path, tracked: list[str], findings: list[Finding]
-) -> None:
+def check_structured_files(repo: Path, tracked: list[str], findings: list[Finding]) -> None:
     for relative in tracked:
         path = repo / relative
         suffix = path.suffix.lower()
@@ -286,9 +272,7 @@ def check_structured_files(
             try:
                 value = json.loads(path.read_text(encoding="utf-8-sig"))
             except (OSError, json.JSONDecodeError) as exc:
-                findings.append(
-                    Finding("ERROR", "json_parse", f"Invalid JSON: {exc}", relative)
-                )
+                findings.append(Finding("ERROR", "json_parse", f"Invalid JSON: {exc}", relative))
                 continue
 
             if not is_finite_json(value):
@@ -306,15 +290,11 @@ def check_structured_files(
                 with path.open("r", encoding="utf-8-sig", newline="") as handle:
                     rows = list(csv.reader(handle))
             except (OSError, csv.Error) as exc:
-                findings.append(
-                    Finding("ERROR", "csv_parse", f"Invalid CSV: {exc}", relative)
-                )
+                findings.append(Finding("ERROR", "csv_parse", f"Invalid CSV: {exc}", relative))
                 continue
 
             if not rows or not rows[0]:
-                findings.append(
-                    Finding("ERROR", "csv_empty", "CSV has no header row.", relative)
-                )
+                findings.append(Finding("ERROR", "csv_empty", "CSV has no header row.", relative))
 
 
 def check_decision_contract(repo: Path, findings: list[Finding]) -> None:
@@ -337,15 +317,10 @@ def check_decision_contract(repo: Path, findings: list[Finding]) -> None:
                     )
                 )
 
-    provenance_path = (
-        repo
-        / "docs/artifacts/final_evaluation/transformer_training_provenance.json"
-    )
+    provenance_path = repo / "docs/artifacts/final_evaluation/transformer_training_provenance.json"
     if provenance_path.is_file():
         try:
-            provenance = json.loads(
-                provenance_path.read_text(encoding="utf-8-sig")
-            )
+            provenance = json.loads(provenance_path.read_text(encoding="utf-8-sig"))
         except json.JSONDecodeError:
             return
 
@@ -371,10 +346,7 @@ def check_decision_contract(repo: Path, findings: list[Finding]) -> None:
                     )
                 )
 
-    weighted_path = (
-        repo
-        / "docs/artifacts/final_evaluation/weighted_challenger_decision.json"
-    )
+    weighted_path = repo / "docs/artifacts/final_evaluation/weighted_challenger_decision.json"
     if weighted_path.is_file():
         try:
             weighted = json.loads(weighted_path.read_text(encoding="utf-8-sig"))
@@ -479,9 +451,7 @@ def check_git(repo: Path, findings: list[Finding], allow_dirty: bool) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(
-        description="Verify the public GitHub release contract."
-    )
+    parser = argparse.ArgumentParser(description="Verify the public GitHub release contract.")
     parser.add_argument("--repo", default=".", help="Repository root.")
     parser.add_argument(
         "--allow-dirty",
@@ -495,9 +465,7 @@ def main() -> int:
     findings: list[Finding] = []
 
     if not (repo / ".git").is_dir():
-        findings.append(
-            Finding("ERROR", "git_repository", "The repository has no .git directory.")
-        )
+        findings.append(Finding("ERROR", "git_repository", "The repository has no .git directory."))
 
     tracked = tracked_files(repo)
     check_required_paths(repo, findings)
